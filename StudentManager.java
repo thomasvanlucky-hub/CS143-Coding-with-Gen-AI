@@ -33,7 +33,7 @@ public class StudentManager {
    public void showMenu() {
       int choice = -1;
    
-      while (choice != 7) {
+      while (choice != 8) {
          System.out.println("\n===== Student Course Manager =====");
          System.out.println("1. Add Student");
          System.out.println("2. Remove Student");
@@ -41,14 +41,15 @@ public class StudentManager {
          System.out.println("4. Display All Students");
          System.out.println("5. Add Course to Student");
          System.out.println("6. View Student's Courses");
-         System.out.println("7. Exit");
+         System.out.println("7. Remove Course from Student");
+         System.out.println("8. Exit");
          System.out.print("Enter your choice: ");
       
          // Read the menu choice — guard against non-numeric input
          try {
             choice = Integer.parseInt(scanner.nextLine().trim());
          } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a number between 1 and 7.");
+            System.out.println("Invalid input. Please enter a number between 1 and 8.");
             continue;
          }
       
@@ -66,7 +67,9 @@ public class StudentManager {
                break;
             case 6: viewStudentCourses(); 
                break;
-            case 7: System.out.println("Goodbye!"); 
+            case 7: removeCourseFromStudent();
+               break;
+            case 8: System.out.println("Goodbye!"); 
                break;
             default: System.out.println("Invalid choice. Please try again.");
          }
@@ -201,6 +204,36 @@ public class StudentManager {
             System.out.println("  - " + course);
          }
       }
+   }
+
+   /**
+    * Removes a specific course from a student's enrollment list.
+    */
+   private void removeCourseFromStudent() {
+      System.out.print("Enter Student ID: ");
+      String id = scanner.nextLine().trim();
+
+      Student student = studentMap.get(id);
+
+      if (student == null) {
+         System.out.println("Error: No student found with ID " + id);
+         return;
+      }
+
+      if (student.getCourses().isEmpty()) {
+         System.out.println(student.getName() + " is not enrolled in any courses.");
+         return;
+      }
+
+      System.out.println("Courses for " + student.getName() + ":");
+      for (String course : student.getCourses()) {
+         System.out.println("  - " + course);
+      }
+
+      System.out.print("Enter Course Name to remove: ");
+      String course = scanner.nextLine().trim();
+
+      student.removeCourse(course);
    }
 
    // -------------------------------------------------------

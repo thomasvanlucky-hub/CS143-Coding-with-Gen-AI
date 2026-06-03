@@ -54,6 +54,19 @@ public class Student {
     }
 
     /**
+     * Removes a single course from this student's course list.
+     * Prints an error if the student is not enrolled in that course.
+     */
+    public void removeCourse(String course) {
+        if (!courses.contains(course)) {
+            System.out.println("Error: " + name + " is not enrolled in \"" + course + "\".");
+            return;
+        }
+        courses.remove(course);
+        System.out.println("Course \"" + course + "\" removed from " + name + ".");
+    }
+
+    /**
      * toString — returns a readable summary of the student.
      * Automatically used when printing a Student object.
      */
