@@ -46,6 +46,10 @@ public class Student {
      * Adds a single course to this student's course list.
      */
     public void addCourse(String course) {
+        if (courses.contains(course)) {
+            System.out.println("Error: " + name + " is already enrolled in \"" + course + "\".");
+            return;
+        }
         courses.add(course);
     }
 
