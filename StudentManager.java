@@ -87,7 +87,7 @@ public class StudentManager {
     */
    private void addStudent() {
       System.out.print("Enter Student ID: ");
-      String id = scanner.nextLine().trim();
+      String id = scanner.nextLine().trim().toUpperCase();
 
       // Reject blank ID
       if (id.isEmpty()) {
@@ -120,7 +120,7 @@ public class StudentManager {
     */
    private void removeStudent() {
       System.out.print("Enter Student ID to remove: ");
-      String id = scanner.nextLine().trim();
+      String id = scanner.nextLine().trim().toUpperCase();
    
       if (studentMap.containsKey(id)) {
          studentMap.remove(id);
@@ -135,7 +135,7 @@ public class StudentManager {
     */
    private void searchStudent() {
       System.out.print("Enter Student ID to search: ");
-      String id = scanner.nextLine().trim();
+      String id = scanner.nextLine().trim().toUpperCase();
    
       Student student = studentMap.get(id); // HashMap lookup — O(1)
    
@@ -166,7 +166,7 @@ public class StudentManager {
     */
    private void addCourseToStudent() {
       System.out.print("Enter Student ID: ");
-      String id = scanner.nextLine().trim();
+      String id = scanner.nextLine().trim().toUpperCase();
    
       Student student = studentMap.get(id);
    
@@ -187,7 +187,7 @@ public class StudentManager {
     */
    private void viewStudentCourses() {
       System.out.print("Enter Student ID: ");
-      String id = scanner.nextLine().trim();
+      String id = scanner.nextLine().trim().toUpperCase();
    
       Student student = studentMap.get(id);
    
@@ -211,7 +211,7 @@ public class StudentManager {
     */
    private void removeCourseFromStudent() {
       System.out.print("Enter Student ID: ");
-      String id = scanner.nextLine().trim();
+      String id = scanner.nextLine().trim().toUpperCase();
 
       Student student = studentMap.get(id);
 
