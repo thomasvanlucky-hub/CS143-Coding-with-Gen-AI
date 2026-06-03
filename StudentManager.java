@@ -44,8 +44,13 @@ public class StudentManager {
          System.out.println("7. Exit");
          System.out.print("Enter your choice: ");
       
-         // Read the menu choice
-         choice = Integer.parseInt(scanner.nextLine().trim());
+         // Read the menu choice — guard against non-numeric input
+         try {
+            choice = Integer.parseInt(scanner.nextLine().trim());
+         } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a number between 1 and 7.");
+            continue;
+         }
       
          // Route to the correct method
          switch (choice) {
@@ -80,7 +85,13 @@ public class StudentManager {
    private void addStudent() {
       System.out.print("Enter Student ID: ");
       String id = scanner.nextLine().trim();
-   
+
+      // Reject blank ID
+      if (id.isEmpty()) {
+         System.out.println("Error: Student ID cannot be blank.");
+         return;
+      }
+
       // Check for duplicate ID
       if (studentMap.containsKey(id)) {
          System.out.println("Error: A student with ID " + id + " already exists.");
@@ -89,7 +100,13 @@ public class StudentManager {
    
       System.out.print("Enter Student Name: ");
       String name = scanner.nextLine().trim();
-   
+
+      // Reject blank name
+      if (name.isEmpty()) {
+         System.out.println("Error: Student name cannot be blank.");
+         return;
+      }
+
       Student student = new Student(id, name); // Create new Student object
       studentMap.put(id, student);             // Store in HashMap
       System.out.println("Student added: " + student);
