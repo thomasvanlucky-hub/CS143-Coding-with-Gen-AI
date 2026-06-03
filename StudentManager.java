@@ -34,7 +34,15 @@ public class StudentManager {
       int choice = -1;
    
       while (choice != 8) {
+         int totalStudents = studentMap.size();
+         int totalEnrollments = 0;
+         for (Student s : studentMap.values()) {
+            totalEnrollments += s.getCourses().size();
+         }
+
          System.out.println("\n===== Student Course Manager =====");
+         System.out.println("Students: " + totalStudents + " | Total Enrollments: " + totalEnrollments);
+         System.out.println("==================================");
          System.out.println("1. Add Student");
          System.out.println("2. Remove Student");
          System.out.println("3. Search Student by ID");
