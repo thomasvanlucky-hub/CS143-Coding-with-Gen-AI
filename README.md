@@ -13,7 +13,7 @@ This program should solve that problem by providing a menu-driven interface that
 The application is built using core Java concepts including Object-Oriented Programming (OOP), a `HashMap` for efficient student lookup, and `Scanner` for console input.
 
 ## Reflection
-1. What did you learn in the process? I learned how to read a file quickly and also quickly find problems within the code
+1. What did you learn in the process? I learned how to read a file with codes quickly and also quickly find problems within the code
 2. What were the benefits of working with GenAI? It saves a lot of time and also brain power as we coders don't really have to think about the logic behind the code before writing it and can just debug the code after it was made.
 3. What were the drawbacks? It can't actually run the code to check for bugs, we as coders have to check it by ourselves.
 4. Any other thoughts? AI works best when you are paying attention to what it is doing rather than just copying everything it is saying.
