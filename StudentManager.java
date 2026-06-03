@@ -39,7 +39,7 @@ public class StudentManager {
          for (Student s : studentMap.values()) {
             totalEnrollments += s.getCourses().size();
          }
-
+      
          System.out.println("\n===== Student Course Manager =====");
          System.out.println("Students: " + totalStudents + " | Total Enrollments: " + totalEnrollments);
          System.out.println("==================================");
@@ -96,13 +96,13 @@ public class StudentManager {
    private void addStudent() {
       System.out.print("Enter Student ID: ");
       String id = scanner.nextLine().trim().toUpperCase();
-
+   
       // Reject blank ID
       if (id.isEmpty()) {
          System.out.println("Error: Student ID cannot be blank.");
          return;
       }
-
+   
       // Check for duplicate ID
       if (studentMap.containsKey(id)) {
          System.out.println("Error: A student with ID " + id + " already exists.");
@@ -111,13 +111,13 @@ public class StudentManager {
    
       System.out.print("Enter Student Name: ");
       String name = scanner.nextLine().trim();
-
+   
       // Reject blank name
       if (name.isEmpty()) {
          System.out.println("Error: Student name cannot be blank.");
          return;
       }
-
+   
       Student student = new Student(id, name); // Create new Student object
       studentMap.put(id, student);             // Store in HashMap
       System.out.println("Student added: " + student);
@@ -220,27 +220,27 @@ public class StudentManager {
    private void removeCourseFromStudent() {
       System.out.print("Enter Student ID: ");
       String id = scanner.nextLine().trim().toUpperCase();
-
+   
       Student student = studentMap.get(id);
-
+   
       if (student == null) {
          System.out.println("Error: No student found with ID " + id);
          return;
       }
-
+   
       if (student.getCourses().isEmpty()) {
          System.out.println(student.getName() + " is not enrolled in any courses.");
          return;
       }
-
+   
       System.out.println("Courses for " + student.getName() + ":");
       for (String course : student.getCourses()) {
          System.out.println("  - " + course);
       }
-
+   
       System.out.print("Enter Course Name to remove: ");
       String course = scanner.nextLine().trim();
-
+   
       student.removeCourse(course);
    }
 
@@ -256,3 +256,139 @@ public class StudentManager {
       manager.showMenu();
    }
 }
+
+    /* 
+    
+    # PROGRAM OUTPUT
+    
+  ----jGRASP exec: java StudentManager
+ 
+ ===== Student Course Manager =====
+ Students: 0 | Total Enrollments: 0
+ ==================================
+ 1. Add Student
+ 2. Remove Student
+ 3. Search Student by ID
+ 4. Display All Students
+ 5. Add Course to Student
+ 6. View Student's Courses
+ 7. Remove Course from Student
+ 8. Exit
+ Enter your choice: 1
+ Enter Student ID: s001
+ Enter Student Name: Thomas
+ Student added: Student ID: S001 | Name: Thomas | Courses: []
+ 
+ ===== Student Course Manager =====
+ Students: 1 | Total Enrollments: 0
+ ==================================
+ 1. Add Student
+ 2. Remove Student
+ 3. Search Student by ID
+ 4. Display All Students
+ 5. Add Course to Student
+ 6. View Student's Courses
+ 7. Remove Course from Student
+ 8. Exit
+ Enter your choice: 1
+ Enter Student ID: s002
+ Enter Student Name: Joaquin
+ Student added: Student ID: S002 | Name: Joaquin | Courses: []
+ 
+ ===== Student Course Manager =====
+ Students: 2 | Total Enrollments: 0
+ ==================================
+ 1. Add Student
+ 2. Remove Student
+ 3. Search Student by ID
+ 4. Display All Students
+ 5. Add Course to Student
+ 6. View Student's Courses
+ 7. Remove Course from Student
+ 8. Exit
+ Enter your choice: 5
+ Enter Student ID: s002
+ Enter Course Name: CS143
+ Course "CS143" added to Joaquin.
+ 
+ ===== Student Course Manager =====
+ Students: 2 | Total Enrollments: 1
+ ==================================
+ 1. Add Student
+ 2. Remove Student
+ 3. Search Student by ID
+ 4. Display All Students
+ 5. Add Course to Student
+ 6. View Student's Courses
+ 7. Remove Course from Student
+ 8. Exit
+ Enter your choice: 5
+ Enter Student ID: s001
+ Enter Course Name: CS143
+ Course "CS143" added to Thomas.
+ 
+ ===== Student Course Manager =====
+ Students: 2 | Total Enrollments: 2
+ ==================================
+ 1. Add Student
+ 2. Remove Student
+ 3. Search Student by ID
+ 4. Display All Students
+ 5. Add Course to Student
+ 6. View Student's Courses
+ 7. Remove Course from Student
+ 8. Exit
+ Enter your choice: 5
+ Enter Student ID: S001
+ Enter Course Name: CS143
+ Error: Thomas is already enrolled in "CS143".
+ Course "CS143" added to Thomas.
+ 
+ ===== Student Course Manager =====
+ Students: 2 | Total Enrollments: 2
+ ==================================
+ 1. Add Student
+ 2. Remove Student
+ 3. Search Student by ID
+ 4. Display All Students
+ 5. Add Course to Student
+ 6. View Student's Courses
+ 7. Remove Course from Student
+ 8. Exit
+ Enter your choice: 2
+ Enter Student ID to remove: s002
+ Student S002 removed successfully.
+ 
+ ===== Student Course Manager =====
+ Students: 1 | Total Enrollments: 1
+ ==================================
+ 1. Add Student
+ 2. Remove Student
+ 3. Search Student by ID
+ 4. Display All Students
+ 5. Add Course to Student
+ 6. View Student's Courses
+ 7. Remove Course from Student
+ 8. Exit
+ Enter your choice: 4
+ 
+ --- All Students ---
+ Student ID: S001 | Name: Thomas | Courses: [CS143]
+ 
+ ===== Student Course Manager =====
+ Students: 1 | Total Enrollments: 1
+ ==================================
+ 1. Add Student
+ 2. Remove Student
+ 3. Search Student by ID
+ 4. Display All Students
+ 5. Add Course to Student
+ 6. View Student's Courses
+ 7. Remove Course from Student
+ 8. Exit
+ Enter your choice: 8
+ Goodbye!
+ 
+  ----jGRASP: Operation complete.
+  
+  */
